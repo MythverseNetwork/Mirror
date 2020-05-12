@@ -5,27 +5,20 @@ plugins {
     id("kr.entree.spigradle") version '1.2.4'
 }
 
-group 'com.mythverse'
+group 'com.mythversemc'
 version '1.0.0'
 
 repositories {
     mavenCentral()
-    maven {
-        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
-
-        content {
-            includeGroup 'org.bukkit'
-            includeGroup 'org.spigotmc'
-        }
-    }
-    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
-    maven { url = 'https://oss.sonatype.org/content/repositories/central' }
-    jitpack()
+    bungeecord()
+    jcenter()
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    implementation paper("1.15.2")
+    implementation bungeecord()
+    compile  "khttp:khttp:1.0.0"
+
 }
 
 compileKotlin {
@@ -36,7 +29,6 @@ compileTestKotlin {
 }
 
 jar {
-    manifest { attributes 'Main-Class': 'Plugin.MainKt' }
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
 

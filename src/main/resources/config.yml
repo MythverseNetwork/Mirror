@@ -1,0 +1,11 @@
+token: ""
+
+mirror:
+  webhookUrl: ""
+
+memberCount:
+  channel: ""
+
+language:
+  memberCountFormat: ""
+  mirrorFormat: "[%s] %s: %s"
